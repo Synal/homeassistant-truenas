@@ -843,7 +843,6 @@ class TrueNASCoordinator(DataUpdateCoordinator[None]):
         )
 
         for uid, vals in self.ds["vm"].items():
-            # self.ds["vm"][uid]["memory"] = round(vals["memory"] / 1024 / 1024 / 1024)
             memory_val = vals.get("memory")
             self.ds["vm"][uid]["memory"] = round(memory_val / 1024 / 1024 / 1024) if memory_val is not None else 0
             self.ds["vm"][uid]["running"] = vals["status"] == "RUNNING"
